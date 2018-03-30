@@ -46,13 +46,13 @@ export default class SimpleForm extends React.Component {
     render() {
         return (
             <div>
-                <InputSearch title='search' value={this.state.itemName} onChange={e => this.doChange(e)}/>
-                <ResultView title='결과' value={this.state.mon} />
                 <FormInput label="test" name={"name"}
                     value={this.state.itemName}
                     filter={/[^ㄱ-ㅎ가-힣]+/g}
                     pattern={/^[ㄱ-ㅎ가-힣]+$/}
                     placeholder={'아이템명을 입력하세요.'} onChange={e => this.doChange(e)}/>
+                <br/>
+                <ResultView title='결과' value={this.state.mon} />
             </div>
         )
     }
