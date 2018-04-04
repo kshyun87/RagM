@@ -1,4 +1,16 @@
-{
+import React from 'react'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton';
+import FontIcon from 'material-ui/FontIcon';
+import ActionAndroid from 'material-ui/svg-icons/action/android';
+const style = {
+  marginTop: 24,
+};
+const style2={
+    width:"80%",
+    margin:"auto"
+}
+const data ={
     "items": {
         "가렛": "마리나. 마르크. 마르크☆. 호넷. 맨블릿. 데니로. 데니로☆. 피에르. 로터자이로. 드래곤 플라이. 황금 도둑벌레",
         "강철": "로다 프로그. 스켈레톤. 바돈. 휀",
@@ -91,4 +103,56 @@
         "오리데오콘 원석": "오본느, 마르크, 페코페코, 드레인리어, 비타타, 데비루치, 오크 워리어, 스템웜, 이클립스, 보컬, 배회하는 자, 바포메트 주니어☆, 바포메트 주니어, 헌터 플라이, 아처 스켈레톤, 마이너 우로스, 이시스, 솔져 스켈레톤, 미스틸테인",
         "오리데오콘": "로터자이로, 고블린 리더, 프리오니, 마야, 도플갱어, 바포메트, 피빛의 기사, 그리폰, 떠돌이 늑대"
     }
+};
+const list_key = Object.keys(data.items);
+
+class MuiTextField extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            value: this.props.value,
+            monster: ""
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+    handleChange(e){
+        const v = e.target.value
+        const newV = v.replace(/[^ㄱ-ㅎ가-힣.]+/g,'')
+        // console.log(newV);
+        this.setState({value:newV})
+    }
+
+    handleClick(e){
+        console.log(data.items[this.state.value]);
+        if (data.items[this.state.value]) {
+            this.setState({monster:data.items[this.state.value]})
+        }else{
+            this.setState({monster:"죄송합니다 찾으시는 내용은 등록되지 않았거나 존재하지 않는 아이템입니다. 빠른시일내에 업데이트하겠습니다."})
+        }
+    }
+
+    render(){
+        return(
+            <div style={style2}>
+                <h1>아이템 검색</h1>
+                <div>
+                    <TextField
+                        hintText="한글로 입력하세요."
+                        value={this.state.value}
+                        onChange={e => this.handleChange(e)}/>
+                    <RaisedButton
+                        label="search"
+                        primary={true}
+                        onClick={this.handleClick}
+                    />
+                </div>
+                <div style={style}>
+                    <label>Result : </label>
+                    <span>{this.state.monster}</span>
+                </div>
+            </div>
+        )
+    }
 }
+
+export default MuiTextField

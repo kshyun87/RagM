@@ -1,18 +1,27 @@
 {
   "name": "rag_m_dict",
   "version": "0.1.0",
+  "homepage":"https://kshyun87.github.io/RagM",
   "private": true,
   "dependencies": {
+    "material-ui": "^0.20.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
-    "react-scripts": "1.1.1"
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.1",
+    "react-split-pane": "^0.1.77",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy":"npm run build && gh-pages -d build"
   },
   "author": "MKei",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
+  }
 }
