@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Inbox from './inbox'
 import Starred from './Starred'
 import MuiTextField from './MuiTextField'
+import DamageInfo from './DamageInfo'
 class PageControl extends Component {
     cunstruct(){ // cunstruct for choosing view file
         // console.log(this.props.selectedMenu);
@@ -10,9 +11,9 @@ class PageControl extends Component {
             case 1:
                 return <MuiTextField />
                 break;
-            // case 2:
-            //     return <Starred />
-            //     break;
+            case 2:
+                return <DamageInfo />
+                break;
             default:
                 return <MuiTextField />
         }
